@@ -1,4 +1,7 @@
+import { TextEncoder } from "util";
 import { Log } from "../src";
+
+jest.mock("../src/utils/CryptoUtils");
 
 beforeAll(() => {
     globalThis.fetch = jest.fn();
@@ -24,6 +27,8 @@ beforeAll(() => {
         enumerable: true,
         get: () => location,
     });
+
+    globalThis.TextEncoder = TextEncoder;
 });
 
 beforeEach(() => {
